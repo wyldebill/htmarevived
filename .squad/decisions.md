@@ -154,26 +154,128 @@ Without these, script remains dry-run only (keeps local execution unblocked).
 
 ---
 
-## User Directives (Captured)
+### 7. Firebase Foundation Scaffolding — COMPLETE (2026-04-18)
+**Owner:** Ariadne (Flutter)  
+**Status:** Complete  
 
-### 2026-04-18T18:12:47Z
-**By:** william austin (via Copilot)
-- Remove visit tracking for now
-- Reduce each business to 3 fields + lat/lng coordinates
-- Use Google Maps for now
-- Read API config from environment variables (build + runtime)
-- User will provide API info later
+**What Was Scaffolded:**
+- Added Flutter dependencies: `firebase_core`, `firebase_database`, `flutter_dotenv`, `google_maps_flutter`
+- Startup boot flow in `htma2/lib/main.dart` with:
+  - env loading + validation
+  - Firebase initialization
+  - loading state, clear error state, retry action
+- Config utility: `htma2/lib/core/config/app_config.dart`
+- Environment templates: `.env.example`, local `.env`
+- Updated: `htma2/README.md` with setup steps
 
-### 2026-04-18T17:34:30Z
-**By:** william austin (via Copilot)
-- For seeded Buffalo dataset: use `Not available` as placeholder when real business lacks public contact name, phone, email
+**Remaining User Inputs:**
+1. Firebase platform config files
+2. Runtime values: `GOOGLE_MAPS_API_KEY`, `FIREBASE_DATABASE_URL`
+3. Firebase project must have Realtime Database enabled
 
-### 2026-04-18T17:33:25Z
+---
+
+### 8. MVP Shell Composition — COMPLETE (2026-04-18)
+**Owner:** Ariadne (Flutter)  
+**Status:** Complete  
+
+**Architecture Decision:**
+- Introduced feature-oriented app shell for narrowed scope
+- Top-level navigation: list + map tabs
+- Read-only business detail route
+- No visit tracking workflow included
+- Startup orchestration in `lib/app/bootstrap/app_bootstrap.dart` (explicit, retryable)
+- Separation of concerns:
+  - RTDB access in `features/businesses/data/rtdb_business_repository.dart`
+  - Google Maps integration in `features/businesses/integrations/google_maps/business_google_map.dart`
+- Configuration kept secret-free via `AppConfig`
+
+**Status:** Shell scaffolded, ready for Phase 3 (Google Maps & UI screens).
+
+---
+
+### 9. List/Map Resiliency & Key Gating — COMPLETE (2026-04-18)
+**Owner:** Ariadne (Flutter)  
+**Status:** Complete  
+
+**Implementation Details:**
+- Completed list view MVP with search + category chips + empty-filter state
+- Data flow read-only: `RtdbBusinessRepository` → `BusinessShellPage` → list/map/detail screens
+- Updated startup config contract:
+  - `FIREBASE_DATABASE_URL` remains required at app startup
+  - `GOOGLE_MAPS_API_KEY` is optional at startup, required only for rendering map tab
+- Graceful map fallback state when key is absent (list/detail remain usable)
+- Business model parsing accepts both flattened `lat`/`lng` and legacy nested `coordinates.lat`/`coordinates.lng` for forward compatibility
+
+**Implication:** Maps feature can be deployed in Phase 3 without breaking list/detail functionality.
+
+---
+
+### 10. RTDB Seed Import Contract — DECISION COMPLETE (2026-04-18)
+**Owner:** Arthur (Backend)  
+**Status:** Approved  
+
+**Tool:** Deterministic PowerShell builder at `.squad/scripts/build-seed-import.ps1`
+- Reads: `.squad/data/buffalo-small-businesses-seed.json`
+- Validates: Exactly 20 records
+- Output: `.squad/data/buffalo-small-businesses-rtdb-seed.json`
+- Imports to: `/businesses` path (only with `-Apply` flag)
+
+**Seed Schema Contract (MVP):**
+- `name`, `category`, `address`, `lat`, `lng` (flattened per MVP scope)
+- No nested fields or Firestore-specific behavior
+
+**Runtime Requirements (for `-Apply` mode):**
+- `FIREBASE_DATABASE_URL`
+- `FIREBASE_DATABASE_SECRET`
+
+Without these, script remains dry-run only (keeps local execution unblocked).
+
+**Status:** Decision finalized, implementation pending user Firebase credentials.
+
+---
+
+## User Directives (Consolidated)
+
+### Firebase & Database (2026-04-18T17:33:25Z)
 **By:** william austin (via Copilot)
-- Use Firebase Realtime Database
-- Seed app with 20 Buffalo, MN small businesses
-- Include: address, business name, website (if available), contact name (if public), phone (if public), email (if public), lat/lng
-- User will provide Flutter Firebase config files
+
+Use Firebase Realtime Database. Seed the app with 20 Buffalo, MN small businesses. Include: address, business name, website if available, contact name if public, phone if public, email if public, and latitude/longitude coordinates. User will provide Flutter Firebase config files.
+
+---
+
+### Placeholder Text for Missing Business Data (2026-04-18T17:34:30Z)
+**By:** william austin (via Copilot)
+
+For the seeded Buffalo business dataset, when a real business lacks a public contact name, phone number, or email address, use `Not available` as the placeholder text.
+
+---
+
+### MVP Scope & Environment Configuration (2026-04-18T18:12:47Z)
+**By:** william austin (via Copilot)
+
+Remove visit tracking for now. Reduce each business to 3 fields plus latitude/longitude coordinates. Use Google Maps for now. Read API configuration from environment variables for both build time and runtime; user will provide API information later.
+
+---
+
+### API Key Handling Best Practices (2026-04-18T18:28:27Z)
+**By:** william austin (via Copilot)
+
+When Firebase setup config and Google Maps API key are provided, use best practices for API-key handling across build-time and runtime. Do not expose API keys.
+
+---
+
+### Testing Target Coverage (2026-04-18T18:30:37Z)
+**By:** william austin (via Copilot)
+
+Keep unit tests up to date. Test coverage does not need to be 100%; target around 60%.
+
+---
+
+### Compile-Safety Completion Rule (2026-04-18T18:33:20Z)
+**By:** william austin (via Copilot)
+
+Always keep the app compiling. A task is not complete until the app compiles cleanly after changes. No compile errors.
 
 ---
 

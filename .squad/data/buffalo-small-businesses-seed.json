@@ -1,0 +1,202 @@
+[
+  {
+    "id": "purple-door-coffee",
+    "name": "Purple Door Coffee",
+    "category": "Coffee",
+    "address": "101 S Main St, Buffalo, MN 55313",
+    "coordinates": {
+      "lat": 44.8449,
+      "lng": -93.9769
+    }
+  },
+  {
+    "id": "meadow-creek-gifts",
+    "name": "Meadow Creek Gifts",
+    "category": "Retail",
+    "address": "115 S Main St, Buffalo, MN 55313",
+    "coordinates": {
+      "lat": 44.8446,
+      "lng": -93.9767
+    }
+  },
+  {
+    "id": "fireside-tavern",
+    "name": "Fireside Tavern",
+    "category": "Restaurant",
+    "address": "201 Cherry St, Buffalo, MN 55313",
+    "coordinates": {
+      "lat": 44.8465,
+      "lng": -93.9751
+    }
+  },
+  {
+    "id": "buffalo-dental",
+    "name": "Buffalo Dental Associates",
+    "category": "Healthcare",
+    "address": "300 Oak Ridge Dr, Buffalo, MN 55313",
+    "coordinates": {
+      "lat": 44.8420,
+      "lng": -93.9685
+    }
+  },
+  {
+    "id": "whitebirch-pizza",
+    "name": "White Birch Pizza",
+    "category": "Restaurant",
+    "address": "105 Sunset Ave, Buffalo, MN 55313",
+    "coordinates": {
+      "lat": 44.8503,
+      "lng": -93.9810
+    }
+  },
+  {
+    "id": "sage-wellness",
+    "name": "Sage Wellness Studio",
+    "category": "Fitness",
+    "address": "207 Grove Ln, Buffalo, MN 55313",
+    "coordinates": {
+      "lat": 44.8475,
+      "lng": -93.9740
+    }
+  },
+  {
+    "id": "northstar-bakery",
+    "name": "Northstar Bakery",
+    "category": "Coffee",
+    "address": "203 Main St, Buffalo, MN 55313",
+    "coordinates": {
+      "lat": 44.8450,
+      "lng": -93.9760
+    }
+  },
+  {
+    "id": "river-road-antiques",
+    "name": "River Road Antiques",
+    "category": "Retail",
+    "address": "402 1st Ave N, Buffalo, MN 55313",
+    "coordinates": {
+      "lat": 44.8430,
+      "lng": -93.9715
+    }
+  },
+  {
+    "id": "blue-moon-bookshop",
+    "name": "Blue Moon Bookshop",
+    "category": "Retail",
+    "address": "150 Elm St, Buffalo, MN 55313",
+    "coordinates": {
+      "lat": 44.8470,
+      "lng": -93.9795
+    }
+  },
+  {
+    "id": "oak-valley-bbq",
+    "name": "Oak Valley BBQ",
+    "category": "Restaurant",
+    "address": "520 US Hwy 25, Buffalo, MN 55313",
+    "coordinates": {
+      "lat": 44.8380,
+      "lng": -93.9660
+    }
+  },
+  {
+    "id": "silverline-salon",
+    "name": "Silverline Hair Salon",
+    "category": "Services",
+    "address": "210 Water St, Buffalo, MN 55313",
+    "coordinates": {
+      "lat": 44.8460,
+      "lng": -93.9772
+    }
+  },
+  {
+    "id": "harvest-organics",
+    "name": "Harvest Organics Market",
+    "category": "Retail",
+    "address": "310 Prairie Lane, Buffalo, MN 55313",
+    "coordinates": {
+      "lat": 44.8510,
+      "lng": -93.9650
+    }
+  },
+  {
+    "id": "westside-garage",
+    "name": "Westside Auto Garage",
+    "category": "Services",
+    "address": "615 Westside Dr, Buffalo, MN 55313",
+    "coordinates": {
+      "lat": 44.8395,
+      "lng": -93.9850
+    }
+  },
+  {
+    "id": "pine-crest-diner",
+    "name": "Pine Crest Diner",
+    "category": "Restaurant",
+    "address": "88 Division St, Buffalo, MN 55313",
+    "coordinates": {
+      "lat": 44.8425,
+      "lng": -93.9730
+    }
+  },
+  {
+    "id": "aurora-jewelry",
+    "name": "Aurora Fine Jewelry",
+    "category": "Retail",
+    "address": "128 S Main St, Buffalo, MN 55313",
+    "coordinates": {
+      "lat": 44.8444,
+      "lng": -93.9765
+    }
+  },
+  {
+    "id": "timber-lodge-cafe",
+    "name": "Timber Lodge Café",
+    "category": "Coffee",
+    "address": "345 Forest Rd, Buffalo, MN 55313",
+    "coordinates": {
+      "lat": 44.8540,
+      "lng": -93.9720
+    }
+  },
+  {
+    "id": "stone-wall-tavern",
+    "name": "Stone Wall Tavern",
+    "category": "Restaurant",
+    "address": "455 Central Ave, Buffalo, MN 55313",
+    "coordinates": {
+      "lat": 44.8490,
+      "lng": -93.9700
+    }
+  },
+  {
+    "id": "green-thumb-nursery",
+    "name": "Green Thumb Nursery",
+    "category": "Retail",
+    "address": "730 Garden St, Buffalo, MN 55313",
+    "coordinates": {
+      "lat": 44.8300,
+      "lng": -93.9700
+    }
+  },
+  {
+    "id": "canvas-art-studio",
+    "name": "Canvas Art Studio",
+    "category": "Services",
+    "address": "267 Artist Way, Buffalo, MN 55313",
+    "coordinates": {
+      "lat": 44.8560,
+      "lng": -93.9640
+    }
+  },
+  {
+    "id": "lakeside-fish-market",
+    "name": "Lakeside Fish Market",
+    "category": "Retail",
+    "address": "580 Waterfront Blvd, Buffalo, MN 55313",
+    "coordinates": {
+      "lat": 44.8350,
+      "lng": -93.9620
+    }
+  }
+]
