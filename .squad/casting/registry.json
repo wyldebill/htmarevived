@@ -1,0 +1,58 @@
+[
+  {
+    "persistent_name": "Cobb",
+    "role": "Lead",
+    "universe": "Inception",
+    "created_at": "2026-04-18T17:33:25.644Z",
+    "legacy_named": false,
+    "status": "active"
+  },
+  {
+    "persistent_name": "Ariadne",
+    "role": "Flutter Dev",
+    "universe": "Inception",
+    "created_at": "2026-04-18T17:33:25.644Z",
+    "legacy_named": false,
+    "status": "active"
+  },
+  {
+    "persistent_name": "Arthur",
+    "role": "Backend Dev",
+    "universe": "Inception",
+    "created_at": "2026-04-18T17:33:25.644Z",
+    "legacy_named": false,
+    "status": "active"
+  },
+  {
+    "persistent_name": "Saito",
+    "role": "Data & Discovery",
+    "universe": "Inception",
+    "created_at": "2026-04-18T17:33:25.644Z",
+    "legacy_named": false,
+    "status": "active"
+  },
+  {
+    "persistent_name": "Eames",
+    "role": "Tester",
+    "universe": "Inception",
+    "created_at": "2026-04-18T17:33:25.644Z",
+    "legacy_named": false,
+    "status": "active"
+  },
+  {
+    "persistent_name": "Scribe",
+    "role": "Session Logger",
+    "universe": "system",
+    "created_at": "2026-04-18T17:33:25.644Z",
+    "legacy_named": false,
+    "status": "active"
+  },
+  {
+    "persistent_name": "Ralph",
+    "role": "Work Monitor",
+    "universe": "system",
+    "created_at": "2026-04-18T17:33:25.644Z",
+    "legacy_named": false,
+    "status": "active"
+  }
+]
