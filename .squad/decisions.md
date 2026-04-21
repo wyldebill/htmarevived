@@ -279,6 +279,131 @@ Always keep the app compiling. A task is not complete until the app compiles cle
 
 ---
 
+### 11. FlutterFire-based Firebase Setup — COMPLETE (2026-04-18)
+**Owner:** Arthur (Backend)  
+**Status:** Complete  
+
+**Decision:** Adopt official FlutterFire CLI pattern as the source of truth for Firebase initialization.
+
+**Implementation:**
+- Initialize Firebase with: `Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)`
+- Use `flutterfire configure` to generate:
+  - `lib/firebase_options.dart`
+  - platform service files where required
+- Enable Android Google Services Gradle plugin in `android/settings.gradle.kts` and `android/app/build.gradle.kts`
+- Gitignore generated platform Firebase config files
+
+**Rationale:**
+- Aligns app with current FlutterFire documentation and cross-platform initialization expectations
+- Reduces manual platform drift by centralizing config generation through FlutterFire CLI
+- Keeps sensitive operational secrets out of source while allowing non-secret app config values in generated options
+
+**Consequences:**
+- Repository now includes a placeholder `lib/firebase_options.dart` that must be replaced by generated output
+- Local/CI onboarding requires running `flutterfire configure` with a valid Firebase project id and credentials
+
+**Status:** Implementation complete; awaiting user Firebase credentials to generate platform-specific config.
+
+---
+
+### 12. Firebase Setup Audit Results — IDENTIFIED GAPS (2026-04-18)
+**Owner:** Eames (QA)  
+**Status:** Audit Complete  
+
+**Audit Findings:**
+1. Missing FlutterFire-generated config (`lib/firebase_options.dart`) — awaiting `flutterfire configure` output
+2. Missing Firebase native app config files:
+   - `android/app/google-services.json`
+   - `ios/Runner/GoogleService-Info.plist`
+3. Android Google Services Gradle plugin: ✅ Now configured (Arthur addressed)
+4. iOS CocoaPods scaffolding: ⚠️ Not verifiable in current repo snapshot
+5. Android min SDK: Uses Flutter default (Firebase requires API 23+)
+
+**Resolution Path:**
+- Arthur's FlutterFire work positions app correctly for modern pattern
+- Remaining gaps are all user-dependent (Firebase project setup, credential provisioning)
+- No architectural changes needed; execution of `flutterfire configure` will resolve all gaps
+
+**Blockers:**
+- User Firebase project credentials required
+- Platform config files must be provided by user from Firebase Console
+
+---
+
+### 13. Package Rename Alignment — COMPLETE (2026-04-18)
+**Owner:** Arthur (Backend), Eames (QA)  
+**Status:** Complete  
+
+**Decision:** Align Dart and Android package identifiers to `htmarevived` following rename from `htma2`.
+
+**Implementation:**
+- **Dart package:** Updated `htma2/pubspec.yaml` to `name: htmarevived`
+- **Android applicationId:** Updated `android/app/build.gradle.kts` to `applicationId = "com.example.htmarevived"`
+- **Validation:** 
+  - ✅ `flutter pub get` passes (package resolution restored)
+  - ✅ `flutter test` passes (all tests green)
+  - ✅ `flutter analyze` passes (no lint issues)
+
+**Rationale:**
+- Dart package resolution requires matching names in `pubspec.yaml`; mismatch prevents import resolution
+- Keeping Android namespace aligned with Dart package name prevents platform identity drift
+- Ensures test imports (`package:htmarevived/...`) resolve correctly at build and test time
+
+**Consequences:**
+- All `package:htmarevived/...` imports now resolve correctly
+- Android and Dart package identifiers are internally consistent
+- Test suite fully operational; no regressions
+
+**Status:** Complete; rename fallout resolved and validated.
+
+---
+
+### 14. Firebase CLI Auth Recovery — Windows Pattern (2026-04-18)
+**Owner:** Arthur (Backend)  
+**Status:** Complete  
+
+**Decision:** Document and implement minimal, ordered recovery sequence for Firebase CLI token refresh failures on Windows.
+
+**Root Cause:**
+- OAuth token refresh returning `400`; Cloud Resource Manager calls failing `401 UNAUTHENTICATED`
+- Token metadata indicates `ACCESS_TOKEN_TYPE_UNSUPPORTED`
+- Primary failure: bad cached OAuth credential chain (refresh token stale/revoked/wrong source)
+- Secondary issue: Firebase CLI resolving credentials from stale Google ADC instead of fresh Firebase login session
+
+**Implementation (Authoritative Recovery Flow):**
+1. Force CLI to forget user session: `firebase logout`
+2. Re-authenticate: `firebase login --reauth`
+3. Verify identity: `firebase projects:list`
+
+**If still failing:**
+1. Clear Firebase token cache: `Remove-Item "$env:APPDATA\configstore\firebase-tools.json" -Force -ErrorAction SilentlyContinue`
+2. Re-login: `firebase login --reauth`
+3. Verify: `firebase projects:list`
+
+**If still failing:**
+1. Clear stale ADC: `Remove-Item "$env:APPDATA\gcloud\application_default_credentials.json" -Force -ErrorAction SilentlyContinue`
+2. Re-login: `firebase login --reauth`
+3. Verify: `firebase projects:list`
+
+**CI/Non-Interactive Fallback:**
+- Use service account via `GOOGLE_APPLICATION_CREDENTIALS` environment variable
+- Set: `$env:GOOGLE_APPLICATION_CREDENTIALS="C:\path\to\service-account.json"`
+- Commands execute without interactive user tokens
+
+**Diagnostic Checks:**
+- Detect nvm/global path mismatch: `Get-Command firebase` and `npm prefix -g`
+- Detect wrong credential source: `Get-ChildItem Env:GOOGLE_APPLICATION_CREDENTIALS,Env:FIREBASE_TOKEN`
+- Test stale ADC: `Test-Path "$env:APPDATA\gcloud\application_default_credentials.json"`
+
+**Expected Good State:**
+- One intended firebase binary path
+- No stale user token env overrides
+- `firebase projects:list` succeeds
+
+**Status:** Complete; recovery runbook ready for operator use.
+
+---
+
 ## Governance
 
 - All meaningful changes require team consensus

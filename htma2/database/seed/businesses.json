@@ -1,0 +1,142 @@
+{
+  "apothe-cari-llc": {
+    "name": "Apothe-Cari LLC",
+    "category": "Wellness",
+    "address": "11 Division St E, Buffalo, MN 55313",
+    "lat": 45.1722827,
+    "lng": -93.8757412
+  },
+  "buffalo-books-and-coffee": {
+    "name": "Buffalo Books and Coffee",
+    "category": "Coffee Shop",
+    "address": "6 Division St E, Buffalo, MN 55313",
+    "lat": 45.1718874,
+    "lng": -93.8758727
+  },
+  "bee-strong-blossoms": {
+    "name": "Bee Strong Blossoms",
+    "category": "Florist",
+    "address": "114 Central Ave, Buffalo, MN 55313",
+    "lat": 45.1735666,
+    "lng": -93.8760123
+  },
+  "evelyns-wine-bar-and-bistro": {
+    "name": "Evelyn's Wine Bar & Bistro | Muffy's Basement",
+    "category": "Restaurant",
+    "address": "18 Central Avenue, Buffalo, MN 55313",
+    "lat": 45.1726187,
+    "lng": -93.8760327
+  },
+  "forget-me-not-cafe": {
+    "name": "Forget Me Not Cafe",
+    "category": "Cafe",
+    "address": "22 Division St E, Buffalo, MN 55313",
+    "lat": 45.1718191,
+    "lng": -93.8753156
+  },
+  "gather-kitchen": {
+    "name": "Gather Kitchen",
+    "category": "Restaurant",
+    "address": "200 Central Ave, Buffalo, MN 55313",
+    "lat": 45.174187,
+    "lng": -93.876084
+  },
+  "whats-the-scoop": {
+    "name": "What's the Scoop?",
+    "category": "Ice Cream",
+    "address": "18 Division St E, Buffalo, MN 55313",
+    "lat": 45.1718635,
+    "lng": -93.8754948
+  },
+  "setterberg-jewelers": {
+    "name": "Setterberg Jewelers",
+    "category": "Retail",
+    "address": "8 Division Street E, Buffalo, MN 55313",
+    "lat": 45.1719168,
+    "lng": -93.8757839
+  },
+  "izzys-formals": {
+    "name": "Izzy's Formals",
+    "category": "Retail",
+    "address": "11 Division St E Suite 100, Buffalo, MN 55313",
+    "lat": 45.1722827,
+    "lng": -93.8757412
+  },
+  "natural-roots-salon": {
+    "name": "Natural Roots Salon",
+    "category": "Salon",
+    "address": "25 Division St E, Buffalo, MN 55313",
+    "lat": 45.1722441,
+    "lng": -93.8751797
+  },
+  "lakeview-nutrition": {
+    "name": "Lakeview Nutrition",
+    "category": "Health & Wellness",
+    "address": "9 Central Ave, Buffalo, MN 55313",
+    "lat": 45.1724463,
+    "lng": -93.8764284
+  },
+  "santosha-healing-arts": {
+    "name": "Santosha Healing Arts",
+    "category": "Wellness",
+    "address": "18 Division St, Buffalo, MN 55313",
+    "lat": 45.1718635,
+    "lng": -93.8754948
+  },
+  "love-inc": {
+    "name": "Love INC",
+    "category": "Nonprofit",
+    "address": "16 1st Ave S, Buffalo, MN 55313",
+    "lat": 45.1713559,
+    "lng": -93.874431
+  },
+  "artistic-me": {
+    "name": "Artistic Me",
+    "category": "Retail",
+    "address": "205 5th St NE, Buffalo, MN 55313",
+    "lat": 45.1775373,
+    "lng": -93.8719752
+  },
+  "clinic-for-medical-aesthetics": {
+    "name": "The Clinic for Medical Aesthetics",
+    "category": "Beauty",
+    "address": "6 2nd St NE, Buffalo, MN 55313",
+    "lat": 45.1738228,
+    "lng": -93.8758999
+  },
+  "adjust-to-health-chiropractic": {
+    "name": "Adjust to Health Chiropractic, P.A.",
+    "category": "Health Care",
+    "address": "109 2nd St S, Buffalo, MN 55313",
+    "lat": 45.1702817,
+    "lng": -93.8736427
+  },
+  "forge-fitness": {
+    "name": "Forge Fitness",
+    "category": "Fitness",
+    "address": "120 1st St S, Buffalo, MN 55313",
+    "lat": 45.1708484,
+    "lng": -93.874438
+  },
+  "optimal-function-pt-wellness": {
+    "name": "Optimal Function Physical Therapy and Wellness",
+    "category": "Health Care",
+    "address": "120 1st St S, Buffalo, MN 55313",
+    "lat": 45.1708484,
+    "lng": -93.874438
+  },
+  "renaissance-therapy-consulting": {
+    "name": "Renaissance Therapy and Consulting",
+    "category": "Health Care",
+    "address": "30 1st Ave NE, Buffalo, MN 55313",
+    "lat": 45.172393,
+    "lng": -93.8746861
+  },
+  "buffalo-nickel-antique-mall": {
+    "name": "Buffalo Nickel Antique Mall",
+    "category": "Antiques",
+    "address": "1004 3rd St S, Buffalo, MN 55313",
+    "lat": 45.168262,
+    "lng": -93.8572207
+  }
+}

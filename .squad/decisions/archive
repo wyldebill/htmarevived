@@ -1,0 +1,17 @@
+# Ariadne Decision: Business Detail MVP Behavior (2026-04-18)
+
+## Context
+Completing todo `build-business-detail` for narrowed MVP scope (no visit tracking, minimal business model).
+
+## Decision
+Business detail screen will:
+- Show only MVP business fields: `name`, `category`, `address`, and `lat/lng` coordinates.
+- Include an embedded map snippet with a single marker at the business coordinates when `GOOGLE_MAPS_API_KEY` is configured.
+- Show a friendly non-crashing fallback message when the map key is missing.
+- Provide a "View on Google Maps" button using a coordinate-based deep link (`https://www.google.com/maps/search/?api=1&query=lat,lng`).
+
+## Navigation Contract
+List and map entry points both navigate to the same detail screen implementation so behavior stays consistent regardless of where selection originates.
+
+## Rationale
+This preserves MVP scope while delivering practical detail usability and resilience under incomplete env configuration.
