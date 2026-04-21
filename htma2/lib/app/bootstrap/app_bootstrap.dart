@@ -1,9 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../core/config/app_config.dart';
 import '../../firebase_options.dart';
+import '../../features/auth/data/auth_session_manager.dart';
 import '../../features/businesses/data/rtdb_business_repository.dart';
 import '../app.dart';
 
@@ -27,16 +30,23 @@ class _AppBootstrapState extends State<AppBootstrap> {
     final config = await AppConfig.load();
     final firebaseOptions = DefaultFirebaseOptions.currentPlatform;
     _ensureFirebaseOptionsConfigured(firebaseOptions);
-    await Firebase.initializeApp(
-      options: firebaseOptions,
-    );
+    await Firebase.initializeApp(options: firebaseOptions);
     final database = FirebaseDatabase.instanceFor(
       app: Firebase.app(),
       databaseURL: config.firebaseDatabaseUrl,
     );
+    final auth = FirebaseAuth.instanceFor(app: Firebase.app());
+    final preferences = await SharedPreferences.getInstance();
+    final sessionManager = AuthSessionManager(
+      auth: auth,
+      preferences: preferences,
+    );
+    await sessionManager.enforceSessionWindow();
     return _BootstrapResult(
       repository: RtdbBusinessRepository(database: database),
       googleMapsApiKey: config.googleMapsApiKey,
+      auth: auth,
+      sessionManager: sessionManager,
     );
   }
 
@@ -62,6 +72,8 @@ class _AppBootstrapState extends State<AppBootstrap> {
         return BuffaloBusinessApp(
           repository: snapshot.requireData.repository,
           googleMapsApiKey: snapshot.requireData.googleMapsApiKey,
+          auth: snapshot.requireData.auth,
+          sessionManager: snapshot.requireData.sessionManager,
         );
       },
     );
@@ -72,10 +84,14 @@ class _BootstrapResult {
   const _BootstrapResult({
     required this.repository,
     required this.googleMapsApiKey,
+    required this.auth,
+    required this.sessionManager,
   });
 
   final RtdbBusinessRepository repository;
   final String googleMapsApiKey;
+  final FirebaseAuth auth;
+  final AuthSessionManager sessionManager;
 }
 
 class _StartupLoadingScreen extends StatelessWidget {

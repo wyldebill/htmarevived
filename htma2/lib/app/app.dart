@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import '../features/businesses/data/business_repository.dart';
-import '../features/businesses/presentation/business_shell_page.dart';
+import '../features/auth/data/auth_session_manager.dart';
+import '../features/auth/presentation/auth_gate.dart';
 
 class BuffaloBusinessApp extends StatelessWidget {
   const BuffaloBusinessApp({
     required this.repository,
     required this.googleMapsApiKey,
+    required this.auth,
+    required this.sessionManager,
     super.key,
   });
 
   final BusinessRepository repository;
   final String googleMapsApiKey;
+  final FirebaseAuth auth;
+  final AuthSessionManager sessionManager;
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +89,9 @@ class BuffaloBusinessApp extends StatelessWidget {
           }),
         ),
       ),
-      home: BusinessShellPage(
+      home: AuthGate(
+        auth: auth,
+        sessionManager: sessionManager,
         repository: repository,
         googleMapsApiKey: googleMapsApiKey,
       ),

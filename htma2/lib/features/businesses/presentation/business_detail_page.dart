@@ -38,9 +38,9 @@ class BusinessDetailPage extends StatelessWidget {
         children: [
           Text(
             business.name,
-            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-              fontWeight: FontWeight.w700,
-            ),
+            style: Theme.of(
+              context,
+            ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w700),
           ),
           const SizedBox(height: 6),
           Text(
@@ -79,7 +79,10 @@ class BusinessDetailPage extends StatelessWidget {
                       markers: {
                         Marker(
                           markerId: MarkerId(business.id),
-                          position: LatLng(business.latitude, business.longitude),
+                          position: LatLng(
+                            business.latitude,
+                            business.longitude,
+                          ),
                           infoWindow: InfoWindow(
                             title: business.name,
                             snippet: business.address,

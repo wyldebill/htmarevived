@@ -92,10 +92,7 @@ class _BusinessGoogleMapState extends State<BusinessGoogleMap> {
     final devicePixelRatio = ui.PlatformDispatcher.instance.views.isEmpty
         ? 1.0
         : ui.PlatformDispatcher.instance.views.first.devicePixelRatio;
-    return BitmapDescriptor.bytes(
-      byteData,
-      imagePixelRatio: devicePixelRatio,
-    );
+    return BitmapDescriptor.bytes(byteData, imagePixelRatio: devicePixelRatio);
   }
 
   Future<void> _syncLocationLayerPermission() async {
@@ -224,10 +221,7 @@ class _BusinessGoogleMapState extends State<BusinessGoogleMap> {
   Future<void> _animateTo(double latitude, double longitude) async {
     await _mapController!.animateCamera(
       CameraUpdate.newCameraPosition(
-        CameraPosition(
-          target: LatLng(latitude, longitude),
-          zoom: 15.5,
-        ),
+        CameraPosition(target: LatLng(latitude, longitude), zoom: 15.5),
       ),
     );
   }
@@ -260,7 +254,10 @@ class _BusinessGoogleMapState extends State<BusinessGoogleMap> {
 
     final fallbackCenter = widget.businesses.isEmpty
         ? const LatLng(45.1719, -93.8747)
-        : LatLng(widget.businesses.first.latitude, widget.businesses.first.longitude);
+        : LatLng(
+            widget.businesses.first.latitude,
+            widget.businesses.first.longitude,
+          );
     final startingCamera =
         widget.initialCameraPosition ??
         CameraPosition(target: fallbackCenter, zoom: 12);

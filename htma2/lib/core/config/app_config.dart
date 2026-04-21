@@ -65,7 +65,8 @@ class AppConfig {
     }
 
     final host = uri.host.toLowerCase();
-    if (host == 'console.firebase.google.com' || host == 'firebase.google.com') {
+    if (host == 'console.firebase.google.com' ||
+        host == 'firebase.google.com') {
       throw AppConfigException(
         'FIREBASE_DATABASE_URL is using a Firebase Console URL. '
         'Use the Realtime Database endpoint URL instead, e.g. '
@@ -74,7 +75,8 @@ class AppConfig {
     }
 
     final isEndpoint =
-        host.endsWith('.firebaseio.com') || host.endsWith('.firebasedatabase.app');
+        host.endsWith('.firebaseio.com') ||
+        host.endsWith('.firebasedatabase.app');
     if (!isEndpoint) {
       throw AppConfigException(
         'FIREBASE_DATABASE_URL must be a Realtime Database endpoint host ending in '

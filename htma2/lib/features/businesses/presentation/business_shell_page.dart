@@ -12,11 +12,13 @@ class BusinessShellPage extends StatefulWidget {
   const BusinessShellPage({
     required this.repository,
     required this.googleMapsApiKey,
+    required this.onSignOut,
     super.key,
   });
 
   final BusinessRepository repository;
   final String googleMapsApiKey;
+  final Future<void> Function() onSignOut;
 
   @override
   State<BusinessShellPage> createState() => _BusinessShellPageState();
@@ -65,6 +67,11 @@ class _BusinessShellPageState extends State<BusinessShellPage> {
             title: Text(title),
             actions: [
               IconButton(onPressed: _refresh, icon: const Icon(Icons.refresh)),
+              IconButton(
+                onPressed: () => widget.onSignOut(),
+                icon: const Icon(Icons.logout),
+                tooltip: 'Sign Out',
+              ),
             ],
           ),
           body: SafeArea(
@@ -138,8 +145,9 @@ class _BusinessShellPageState extends State<BusinessShellPage> {
   }
 
   String _errorMessage(Object? error) {
-    if (error case FirebaseException(:final code)
-        when code == 'permission-denied') {
+    if (error case FirebaseException(
+      :final code,
+    ) when code == 'permission-denied') {
       return 'Firebase denied read access to /businesses. '
           'Update Realtime Database Rules to allow this read path, '
           'or sign in with an authorized user.';

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-import 'package:htmarevived/app/app.dart';
 import 'package:htmarevived/features/businesses/data/business_repository.dart';
 import 'package:htmarevived/features/businesses/domain/business.dart';
 import 'package:htmarevived/features/businesses/presentation/business_detail_page.dart';
@@ -15,7 +14,13 @@ void main() {
     WidgetTester tester,
   ) async {
     await tester.pumpWidget(
-      BuffaloBusinessApp(repository: _FakeRepository(), googleMapsApiKey: ''),
+      MaterialApp(
+        home: BusinessShellPage(
+          repository: _FakeRepository(),
+          googleMapsApiKey: '',
+          onSignOut: () async {},
+        ),
+      ),
     );
     await tester.pumpAndSettle();
     expect(find.text('Businesses'), findsOneWidget);
@@ -47,7 +52,13 @@ void main() {
     WidgetTester tester,
   ) async {
     await tester.pumpWidget(
-      BuffaloBusinessApp(repository: _FakeRepository(), googleMapsApiKey: ''),
+      MaterialApp(
+        home: BusinessShellPage(
+          repository: _FakeRepository(),
+          googleMapsApiKey: '',
+          onSignOut: () async {},
+        ),
+      ),
     );
     await tester.pumpAndSettle();
 
@@ -145,7 +156,11 @@ void main() {
 
     await tester.pumpWidget(
       MaterialApp(
-        home: BusinessShellPage(repository: repository, googleMapsApiKey: ''),
+        home: BusinessShellPage(
+          repository: repository,
+          googleMapsApiKey: '',
+          onSignOut: () async {},
+        ),
       ),
     );
     await tester.pumpAndSettle();
@@ -170,6 +185,7 @@ void main() {
           home: BusinessShellPage(
             repository: _EmptyRepository(),
             googleMapsApiKey: '',
+            onSignOut: () async {},
           ),
         ),
       );
@@ -193,6 +209,7 @@ void main() {
         home: BusinessShellPage(
           repository: _PermissionDeniedRepository(),
           googleMapsApiKey: '',
+          onSignOut: () async {},
         ),
       ),
     );
