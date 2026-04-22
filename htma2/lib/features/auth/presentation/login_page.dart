@@ -20,7 +20,8 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  final _formKey = GlobalKey<FormState>();
+  final _emailFocusNode = FocusNode();
+  final _passwordFocusNode = FocusNode();
 
   bool _isSubmitting = false;
   String? _errorMessage;
@@ -29,11 +30,24 @@ class _LoginPageState extends State<LoginPage> {
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
+    _emailFocusNode.dispose();
+    _passwordFocusNode.dispose();
     super.dispose();
   }
 
   Future<void> _signIn() async {
-    if (!_formKey.currentState!.validate()) {
+    final email = _emailController.text.trim();
+    final password = _passwordController.text;
+    if (email.isEmpty) {
+      setState(() {
+        _errorMessage = 'Email is required.';
+      });
+      return;
+    }
+    if (password.isEmpty) {
+      setState(() {
+        _errorMessage = 'Password is required.';
+      });
       return;
     }
 
@@ -44,8 +58,8 @@ class _LoginPageState extends State<LoginPage> {
 
     try {
       await widget.auth.signInWithEmailAndPassword(
-        email: _emailController.text.trim(),
-        password: _passwordController.text,
+        email: email,
+        password: password,
       );
       await widget.sessionManager.markLoginSuccess();
     } on FirebaseAuthException catch (error) {
@@ -80,70 +94,58 @@ class _LoginPageState extends State<LoginPage> {
             child: Card(
               child: Padding(
                 padding: const EdgeInsets.all(20),
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      const Text(
-                        'Sign in to continue',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w700,
-                        ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    const Text(
+                      'Sign in to continue',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
                       ),
-                      const SizedBox(height: 16),
-                      TextFormField(
-                        controller: _emailController,
-                        keyboardType: TextInputType.emailAddress,
-                        autofillHints: const [AutofillHints.username],
-                        decoration: const InputDecoration(labelText: 'Email'),
-                        validator: (value) {
-                          final email = value?.trim() ?? '';
-                          if (email.isEmpty) {
-                            return 'Email is required.';
-                          }
-                          return null;
-                        },
-                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    TextField(
+                      controller: _emailController,
+                      focusNode: _emailFocusNode,
+                      enabled: !_isSubmitting,
+                      keyboardType: TextInputType.emailAddress,
+                      textInputAction: TextInputAction.next,
+                      autofillHints: const [AutofillHints.username],
+                      decoration: const InputDecoration(labelText: 'Email'),
+                      onSubmitted: (_) => _passwordFocusNode.requestFocus(),
+                    ),
+                    const SizedBox(height: 12),
+                    TextField(
+                      controller: _passwordController,
+                      focusNode: _passwordFocusNode,
+                      enabled: !_isSubmitting,
+                      obscureText: true,
+                      textInputAction: TextInputAction.done,
+                      autofillHints: const [AutofillHints.password],
+                      decoration: const InputDecoration(labelText: 'Password'),
+                      onSubmitted: (_) => _signIn(),
+                    ),
+                    if (_errorMessage != null) ...[
                       const SizedBox(height: 12),
-                      TextFormField(
-                        controller: _passwordController,
-                        obscureText: true,
-                        autofillHints: const [AutofillHints.password],
-                        decoration: const InputDecoration(
-                          labelText: 'Password',
-                        ),
-                        validator: (value) {
-                          if ((value ?? '').isEmpty) {
-                            return 'Password is required.';
-                          }
-                          return null;
-                        },
-                      ),
-                      if (_errorMessage != null) ...[
-                        const SizedBox(height: 12),
-                        Text(
-                          _errorMessage!,
-                          style: const TextStyle(color: Color(0xFFB91C1C)),
-                        ),
-                      ],
-                      const SizedBox(height: 20),
-                      FilledButton(
-                        onPressed: _isSubmitting ? null : _signIn,
-                        child: _isSubmitting
-                            ? const SizedBox(
-                                height: 18,
-                                width: 18,
-                                child: CircularProgressIndicator(
-                                  strokeWidth: 2,
-                                ),
-                              )
-                            : const Text('Sign In'),
+                      Text(
+                        _errorMessage!,
+                        style: const TextStyle(color: Color(0xFFB91C1C)),
                       ),
                     ],
-                  ),
+                    const SizedBox(height: 20),
+                    FilledButton(
+                      onPressed: _isSubmitting ? null : _signIn,
+                      child: _isSubmitting
+                          ? const SizedBox(
+                              height: 18,
+                              width: 18,
+                              child: CircularProgressIndicator(strokeWidth: 2),
+                            )
+                          : const Text('Sign In'),
+                    ),
+                  ],
                 ),
               ),
             ),

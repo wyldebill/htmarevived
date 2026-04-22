@@ -27,52 +27,52 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'REPLACE_WITH_FLUTTERFIRE_CONFIGURE',
-    appId: 'REPLACE_WITH_FLUTTERFIRE_CONFIGURE',
-    messagingSenderId: 'REPLACE_WITH_FLUTTERFIRE_CONFIGURE',
-    projectId: 'REPLACE_WITH_FLUTTERFIRE_CONFIGURE',
-    authDomain: 'REPLACE_WITH_FLUTTERFIRE_CONFIGURE',
-    databaseURL: 'REPLACE_WITH_FLUTTERFIRE_CONFIGURE',
-    storageBucket: 'REPLACE_WITH_FLUTTERFIRE_CONFIGURE',
+    apiKey: 'AIzaSyCmHG38l2Pn4P9mits_fIb4jauAAPxZzws',
+    appId: '1:755342721880:web:339343815f86a021eddb2d',
+    messagingSenderId: '755342721880',
+    projectId: 'shopsfirebase-a92b0',
+    authDomain: 'shopsfirebase-a92b0.firebaseapp.com',
+    databaseURL: 'https://shopsfirebase-a92b0-default-rtdb.firebaseio.com',
+    storageBucket: 'shopsfirebase-a92b0.firebasestorage.app',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'REPLACE_WITH_FLUTTERFIRE_CONFIGURE',
-    appId: 'REPLACE_WITH_FLUTTERFIRE_CONFIGURE',
-    messagingSenderId: 'REPLACE_WITH_FLUTTERFIRE_CONFIGURE',
-    projectId: 'REPLACE_WITH_FLUTTERFIRE_CONFIGURE',
-    databaseURL: 'REPLACE_WITH_FLUTTERFIRE_CONFIGURE',
-    storageBucket: 'REPLACE_WITH_FLUTTERFIRE_CONFIGURE',
+    apiKey: 'AIzaSyBJ3fDXbp8AijHVH4RGFarOiZwltRVCzRQ',
+    appId: '1:755342721880:android:bc1c2e76330cc454eddb2d',
+    messagingSenderId: '755342721880',
+    projectId: 'shopsfirebase-a92b0',
+    databaseURL: 'https://shopsfirebase-a92b0-default-rtdb.firebaseio.com',
+    storageBucket: 'shopsfirebase-a92b0.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'REPLACE_WITH_FLUTTERFIRE_CONFIGURE',
-    appId: 'REPLACE_WITH_FLUTTERFIRE_CONFIGURE',
-    messagingSenderId: 'REPLACE_WITH_FLUTTERFIRE_CONFIGURE',
-    projectId: 'REPLACE_WITH_FLUTTERFIRE_CONFIGURE',
-    databaseURL: 'REPLACE_WITH_FLUTTERFIRE_CONFIGURE',
-    storageBucket: 'REPLACE_WITH_FLUTTERFIRE_CONFIGURE',
-    iosBundleId: 'REPLACE_WITH_FLUTTERFIRE_CONFIGURE',
+    apiKey: 'AIzaSyBNBkGnRmj5Suot37mc5gTMdl39TFGpAW0',
+    appId: '1:755342721880:ios:c8a82314db8dbe39eddb2d',
+    messagingSenderId: '755342721880',
+    projectId: 'shopsfirebase-a92b0',
+    databaseURL: 'https://shopsfirebase-a92b0-default-rtdb.firebaseio.com',
+    storageBucket: 'shopsfirebase-a92b0.firebasestorage.app',
+    iosBundleId: 'com.example.htmarevived',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'REPLACE_WITH_FLUTTERFIRE_CONFIGURE',
-    appId: 'REPLACE_WITH_FLUTTERFIRE_CONFIGURE',
-    messagingSenderId: 'REPLACE_WITH_FLUTTERFIRE_CONFIGURE',
-    projectId: 'REPLACE_WITH_FLUTTERFIRE_CONFIGURE',
-    databaseURL: 'REPLACE_WITH_FLUTTERFIRE_CONFIGURE',
-    storageBucket: 'REPLACE_WITH_FLUTTERFIRE_CONFIGURE',
-    iosBundleId: 'REPLACE_WITH_FLUTTERFIRE_CONFIGURE',
+    apiKey: 'AIzaSyBNBkGnRmj5Suot37mc5gTMdl39TFGpAW0',
+    appId: '1:755342721880:ios:c8a82314db8dbe39eddb2d',
+    messagingSenderId: '755342721880',
+    projectId: 'shopsfirebase-a92b0',
+    databaseURL: 'https://shopsfirebase-a92b0-default-rtdb.firebaseio.com',
+    storageBucket: 'shopsfirebase-a92b0.firebasestorage.app',
+    iosBundleId: 'com.example.htmarevived',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'REPLACE_WITH_FLUTTERFIRE_CONFIGURE',
-    appId: 'REPLACE_WITH_FLUTTERFIRE_CONFIGURE',
-    messagingSenderId: 'REPLACE_WITH_FLUTTERFIRE_CONFIGURE',
-    projectId: 'REPLACE_WITH_FLUTTERFIRE_CONFIGURE',
-    authDomain: 'REPLACE_WITH_FLUTTERFIRE_CONFIGURE',
-    databaseURL: 'REPLACE_WITH_FLUTTERFIRE_CONFIGURE',
-    storageBucket: 'REPLACE_WITH_FLUTTERFIRE_CONFIGURE',
+    apiKey: 'AIzaSyCmHG38l2Pn4P9mits_fIb4jauAAPxZzws',
+    appId: '1:755342721880:web:3e7b4566e643bd7feddb2d',
+    messagingSenderId: '755342721880',
+    projectId: 'shopsfirebase-a92b0',
+    authDomain: 'shopsfirebase-a92b0.firebaseapp.com',
+    databaseURL: 'https://shopsfirebase-a92b0-default-rtdb.firebaseio.com',
+    storageBucket: 'shopsfirebase-a92b0.firebasestorage.app',
   );
 
   static const FirebaseOptions linux = FirebaseOptions(
