@@ -60,7 +60,7 @@ flutter run \
 | Variable | Purpose | Example | Source |
 |----------|---------|---------|--------|
 | `GOOGLE_MAPS_API_KEY` | Unlocks Google Maps SDK on Android and iOS | `AIzaSyD...` | [Google Cloud Console](https://console.cloud.google.com/) |
-| `FIREBASE_DATABASE_URL` | Firebase Realtime Database endpoint | `https://my-project.firebaseio.com` | [Firebase Console](https://console.firebase.google.com/) |
+| `FIREBASE_DATABASE_URL` | Firebase Realtime Database endpoint | `https://my-project.firebaseio.com` | [Firebase Console](https://console.firebase.google.com/) | Find this in the Firebase Project, Real Time Database, Data tab.  The URL to the database will be above the data as a link.
 
 ### Optional Variables
 
